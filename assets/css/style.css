@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Rosarivo&family=Shadows+Into+Light+Two&display=swap');
+
+/* font-family: 'Rosarivo', serif;
+font-family: 'Shadows Into Light Two', cursive; */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+.display_flex {
+    display: flex;
+}
+/* #img_bg {
+    position: absolute;
+    z-index: -2;
+    height: 100vh;
+    width:100vw;
+    overflow: hidden;
+    background:  no-repeat center/100% url("../img/back_cover_memorie.png");
+} */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+body {
+    
+    background:  no-repeat center/100% url("../img/back_cover_memorie.png");
+}
+/******************* HEADER **************/
+
+header {
+    position: relative;
+    min-height: 10rem;
+    background: no-repeat url('../img/header_bg.png') ;
+}
+/* header::before {
+    position: absolute;
+    z-index: -1;
+    height: 200px;
+    width: 100vw;
+    background: no-repeat url('../img/header_bg.png') ;
+    content: '';
+    content: url('../img/header_bg.png');;
+} */
+#title_page {
+    position: relative;
+    -webkit-text-stroke: 2px #7B14AC;
+    padding-top: 1rem;
+    font-weight: 300;
+    font-size: 3.7rem;
+    color: #D6D0D0;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Shadows Into Light Two', cursive;
+    text-shadow: 0px 19px 7px #2D8787, 0px 4px 0px #2D7487;
+}
+/************** MAIN PAGE *************/
+main {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/****** PAGE ACCEUIL ******/
+#div_center_btn {
+    display: flex;
+    justify-content: center;
+}
+.btn_play {
+    font-family: 'Rosarivo', serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: #D6D0D0;
+    background-color: #6E2934;
+    margin: 0;
+    padding: 1.5rem 5rem;
+    border: 7px solid rgba(0, 0, 0, 0.6);
+    border-radius: 1.5rem;
+    transition: 500ms ease-in-out;
+}
+.btn_play:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#top_time {
+    color: #D6D0D0;
+    margin: 3rem;
+    background-color: #100908;
+    padding: 1rem 15rem;
+    text-align: center;
+}
+#top_time h2 {
+    padding-bottom: 1rem;
+}
+#top_time ol {
+    font-size: 2rem;
+}
+#top_time ol > li:first-child {
+    position: relative;
+}
+#top_time ol > li:first-child::after {
+content: url('');
+width: 50px;
+height: 50px;
+right: 0;
+position: absolute;
+}
+/************ FOOTER ************/
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    justify-content: space-around;
+    min-height: 10rem;
+}
+footer a {
+    font-family: 'Shadows Into Light Two', cursive;
+    height: 10rem;
+    line-height: 10rem;
+    display: inline-block;
+    font-size: 2rem;
+    text-transform: uppercase;
+    
+}
+footer::before {
+    bottom: 0;
+    position: absolute;
+    z-index: -1;
+    content: "";
+    height: 80%;
+    width: 100%;
+    background: no-repeat url('../img/footer_bg.png');
+}
+
+/*********** TABLE GAME **************/
+.table_game {
+    margin-top: 3rem;
+    min-height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(9, 100px);
+    gap: 1rem;
+    animation: transformScale 1s ease-in;
+}
+.fruit_card {
+    width: 100%;
+    height: 100px;
+    background-color:#2B6472;
+    border-radius: 12px;
+    box-shadow: inset 0 0 11px rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 0 14px rgba(0, 0, 0, 0.8));
+    transition: transform 500ms ease-in;
+}
+.fruit_card:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+@keyframes transformScale {
+    from {
+        transform: scale(0);
+        transform-origin: bottom;
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateArrow {
+    0% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+    80% {
+        transform: rotate(5deg);
+    }
+    85% {
+        transform: rotate(-5deg);
+    }
+    90% {
+        transform: rotate(5deg);
+    }
+    95% {
+        transform: rotate(-5deg);
+    }
+}
+#title_page::before {
+    content: url(../img/Vector.png);
+    position: absolute;
+    left: 20%;
+    transform-origin: top left;
+    animation: rotateArrow 3s  infinite alternate cubic-bezier(.85,.33,.44,.82);
+}
