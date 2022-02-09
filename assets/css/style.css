@@ -54,6 +54,13 @@ header {
     font-family: 'Shadows Into Light Two', cursive;
     text-shadow: 0px 19px 7px #2D8787, 0px 4px 0px #2D7487;
 }
+#title_page::before {
+    content: url(../img/Vector.png);
+    position: absolute;
+    left: 20%;
+    transform-origin: top left;
+    animation: rotateArrow 3s  infinite alternate cubic-bezier(.85,.33,.44,.82);
+}
 /************** MAIN PAGE *************/
 main {
     padding: 2rem 0;
@@ -84,11 +91,25 @@ main {
 }
 
 #top_time {
+    position: relative;
     color: #D6D0D0;
     margin: 3rem;
-    background-color: #100908;
+    background-color: #100908bb;
     padding: 1rem 15rem;
     text-align: center;
+    border-radius: 1.5rem;
+}
+#top_time::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 1.5rem;
+    border:  0.5rem dotted #ff2d96b7;
+    animation: borderTime 500ms infinite forwards ease-in-out alternate;
+    box-sizing: border-box;
 }
 #top_time h2 {
     padding-bottom: 1rem;
@@ -100,11 +121,13 @@ main {
     position: relative;
 }
 #top_time ol > li:first-child::after {
-content: url('');
-width: 50px;
-height: 50px;
-right: 0;
-position: absolute;
+    position: absolute;
+    content:"";
+    background: center/cover no-repeat url('../img/crown_top_time.png');
+    width: 50px;
+    height: 50px;
+    top: -0.5rem;
+    left: -6.25rem;
 }
 /************ FOOTER ************/
 
@@ -156,6 +179,8 @@ footer::before {
     transform: scale(1.1);
     cursor: pointer;
 }
+
+/********** KEYFRAME *******/
 @keyframes transformScale {
     from {
         transform: scale(0);
@@ -186,10 +211,25 @@ footer::before {
         transform: rotate(-5deg);
     }
 }
-#title_page::before {
-    content: url(../img/Vector.png);
-    position: absolute;
-    left: 20%;
-    transform-origin: top left;
-    animation: rotateArrow 3s  infinite alternate cubic-bezier(.85,.33,.44,.82);
+@keyframes borderTime {
+    100% {
+        border: 1rem dashed #FF2D95;
+    }
+}
+/******* AFTER GAME END *************/
+.marge {
+    margin-left: 5rem;
+}
+.timer {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.end_game {
+    text-align: center;
+    margin-top: 2rem;
+}
+.win_lose {
+    font-size: 5rem;
+    font-weight: 900;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }

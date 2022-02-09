@@ -5,6 +5,7 @@ const divBtnPlay = document.getElementById('div_center_btn')
 let dataFruit = [];
 let arrayCardCompare = [];
 let arrayWin = 0;
+//Créer la section avec le jeu de carte
 function tableCard() {
     const newTable = document.createElement('section');
     const divTimer = document.createElement("div");
@@ -54,10 +55,10 @@ function discoveryCard() {
                 card.style.background = `0% ${100 * -dataId}px no-repeat url(assets/img/cards.png)`;
             }, 500);
             comparaisonCard(card);
-            fullArray();
         })
     })
 }
+
 function comparaisonCard(card) {
     if (arrayCardCompare.length <= 1) {
         card.style.pointerEvents = "none";
@@ -84,12 +85,7 @@ function comparaisonCard(card) {
         }
     }
 }
-function fullArray() {
-    if (arrayWin == 18 ) {
-        document.querySelector(".table_game").remove();
-
-    }
-}
+// Créer le compte à rebour
 function timer() {
     let m = 0;
     let s = 0;
@@ -100,21 +96,52 @@ function timer() {
         m < 10 ? (mR = `0${m}`) : (mR = `${m}`);
 
         document.querySelector(".timer").innerText = `00:${mR}:${sR}`;
-        document.querySelector(".timer").dataset.time = `00:${mR}:${sR}`;
         if(s == 59) {
             m++;
             s = 0;
         } else {
         s++;
         }
-        if(arrayWin == 18){
-
+        if(arrayWin == 1){
             clearInterval(intervalTime);
+            pushTime();
+            endGame();
         };
     }
     let intervalTime = setInterval(rebour, 1000);
     
 }
+// Enregistre et envoie le temps dans la base de donnée
+function pushTime() {
+    
+    let timeRecord =  document.querySelector(".timer").innerHTML;
+    console.log(timeRecord);
+    recordTime = new FormData();
+    recordTime.append("time", timeRecord);
+    fetch("./req_post.php", {
+        method: "POST",
+        body: recordTime,
+    })
+}
+
+function endGame() {
+        const newSection = document.createElement("section");
+        newSection.classList.add("end_game");
+        const newP = document.createElement("p");
+        newP.classList.add("win_lose");
+        let textWin = document.createTextNode(" You're score")
+        document.querySelector(".timer").appendChild(textWin);
+        newP.innerText = "You Win !"
+        main.appendChild(newSection);
+        newSection.appendChild(newP);
+        newSection.append(topTime);
+        main.append(btnPlay);
+        document.querySelector(".table_game").remove();
+        arrayWin = 0;
+        
+
+}
+//Lance le jeu au click du start
 btnPlay.addEventListener('click', function () {
     divBtnPlay.remove();
     topTime.remove();

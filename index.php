@@ -1,5 +1,7 @@
 <?php
 require_once './assets/connectDB/connect.php';
+$req_time = $db->query("SELECT `time`, `date_time` FROM `times` ORDER BY `time` LIMIT 5", PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,11 +24,12 @@ require_once './assets/connectDB/connect.php';
         <div id="top_time">
             <h2>Top time</h2>
             <ol>
-                <li>00.00.00</li>
-                <li>00.00.00</li>
-                <li>00.00.00</li>
-                <li>00.00.00</li>
-                <li>00.00.00</li>
+                <?php foreach($req_time as $time) {
+                ?>
+                <li><span><?= $time["time"]?></span><span class="marge"><?= $time["date_time"]?></span></li>
+                <?php
+                }
+                ?>
             </ol>
         </div>
     </main>
