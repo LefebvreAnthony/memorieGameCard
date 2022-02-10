@@ -23,7 +23,6 @@ a {
     color: #fff;
 }
 body {
-    
     background:  no-repeat center/100% url("../img/back_cover_memorie.png");
 }
 /******************* HEADER **************/
@@ -131,7 +130,7 @@ main {
 }
 /************ FOOTER ************/
 
-footer {
+/* footer {
     position: fixed;
     bottom: 0;
     width: 100vw;
@@ -155,20 +154,20 @@ footer::before {
     height: 80%;
     width: 100%;
     background: no-repeat url('../img/footer_bg.png');
-}
+} */
 
 /*********** TABLE GAME **************/
 .table_game {
     margin-top: 3rem;
-    min-height: 40vh;
+    min-height: 50vh;
     display: grid;
     grid-template-columns: repeat(9, 100px);
     gap: 1rem;
     animation: transformScale 1s ease-in;
 }
 .fruit_card {
-    width: 100%;
-    height: 100px;
+    width: auto;
+    height: auto;
     background-color:#2B6472;
     border-radius: 12px;
     box-shadow: inset 0 0 11px rgba(255, 255, 255, 0.5);
@@ -232,4 +231,83 @@ footer::before {
     font-size: 5rem;
     font-weight: 900;
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+
+/***** RESPONSIVE *********/
+
+/**** TABLETTE ********/
+@media screen and (max-width: 900px) {
+    #main {
+        padding: 0;
+    }
+    #title_page::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    left: 2%;
+    background: left/contain no-repeat url(../img/Vector.png);
+    }
+    .table_game {
+        margin-top: 2rem;
+    grid-template-columns: repeat(6, 75px);
+    grid-template-rows: repeat(6, 80px);
+    gap: 1rem 2rem;
+    }
+    .btn_play {
+        margin-top: 1rem;
+    }
+    #top_time {
+        padding: 1rem 10rem;
+    }
+}
+
+/******** PHONE *****/
+
+@media screen and (max-width: 400px) {
+    .display_none {
+        display: none;
+    }
+    #title_page {
+        padding-top: 2rem;
+        font-size: 2rem;
+    }   
+    .btn_play {
+        font-size: 1rem;
+    }
+    body {    
+        background:  initial;
+    }
+    main::after {
+        content: "";
+        position: absolute;
+        z-index: -1000;
+        width: 330%;
+        height: 150%;
+        background:no-repeat  url("../img/back_cover_memorie.png");
+        background-size: contain;
+        top: 0;
+        transform: rotate(90deg);
+    }
+    #top_time {
+        padding: 1rem;
+        width: 100%;
+    }
+    #top_time ol {
+        font-size: 1rem;
+    }
+    #top_time ol > li {
+        margin-bottom: 1rem;
+    }
+    #top_time ol > li:first-child::after {
+        left: 1.5rem;
+        top: -1.5rem;
+    }
+    
+    .table_game {
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: repeat(9, 65px);
+    gap: 1rem 2rem;
+    padding-bottom: 1rem;
+    }
 }

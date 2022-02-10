@@ -1,7 +1,8 @@
 const main = document.getElementById('main');
 const btnPlay = document.querySelector('.btn_play');
 const topTime = document.querySelector('#top_time');
-const divBtnPlay = document.getElementById('div_center_btn')
+const divBtnPlay = document.getElementById('div_center_btn');
+const header = document.querySelector('header');
 let dataFruit = [];
 let arrayCardCompare = [];
 let arrayWin = 0;
@@ -52,7 +53,7 @@ function discoveryCard() {
             let dataId = card.dataset.id;
             setTimeout(() => {
                 //descendre la position de l'image en fonction de la card
-                card.style.background = `0% ${100 * -dataId}px no-repeat url(assets/img/cards.png)`;
+                card.style.background = `center ${100 * -dataId}px no-repeat url(assets/img/cards.png)`;
             }, 500);
             comparaisonCard(card);
         })
@@ -123,21 +124,29 @@ function pushTime() {
         body: recordTime,
     })
 }
-
+// Fin de jeu, faire apparaitre les elements.
 function endGame() {
         const newSection = document.createElement("section");
         newSection.classList.add("end_game");
         const newP = document.createElement("p");
         newP.classList.add("win_lose");
         let textWin = document.createTextNode(" You're score")
+        const newBtn = document.createElement("button");
+        newBtn.classList.add("btn_play");
+        newBtn.innerText = "Revenir à l'acceuil pour une nouvelle partie"
         document.querySelector(".timer").appendChild(textWin);
         newP.innerText = "You Win !"
         main.appendChild(newSection);
         newSection.appendChild(newP);
         newSection.append(topTime);
-        main.append(btnPlay);
+        topTime.style.margin = "0";
+        topTime.style.width = "initial";
+        main.appendChild(newBtn);
         document.querySelector(".table_game").remove();
-        arrayWin = 0;
+        
+        newBtn.addEventListener("click", () => {
+            window.location.assign("index.php");
+        })
         
 
 }
@@ -145,6 +154,7 @@ function endGame() {
 btnPlay.addEventListener('click', function () {
     divBtnPlay.remove();
     topTime.remove();
+    header.classList.add('display_none')
     tableCard();
     timer();
 });
